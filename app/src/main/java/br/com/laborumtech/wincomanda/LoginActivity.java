@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     }
    // EditText campoLogin = (EditText) findViewById(R.id.campoLogin);
 
-    @Override
+   /* @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
         if(keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER)
         {
@@ -27,5 +27,16 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return true;
-    }
+    } */
+   @Override
+   public boolean onKeyDown(int keyCode, KeyEvent event)
+   {
+       if(keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER)
+       {
+           Log.d("Keycode", "Got KeyCode 9");
+           return true;
+       }
+
+       return super.onKeyDown(keyCode, event);
+   }
 }
