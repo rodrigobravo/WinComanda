@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intentvaiparaconfig = new Intent(MainActivity.this, ConfigActivity.class);
+            startActivity(intentvaiparaconfig);
+
             return true;
         }
 
