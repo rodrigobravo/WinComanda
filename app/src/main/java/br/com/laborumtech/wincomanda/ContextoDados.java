@@ -69,4 +69,59 @@ public class ContextoDados extends SQLiteOpenHelper{
             if (s.trim().length()>0)
                 db.execSQL(s);
     }
+
+    /** Retorna um ContatosCursor ordenado
+     * @param critério de ordenação
+     */
+    public ContatosCursor RetornarContatos(ContatosCursor.OrdenarPor ordenarPor)
+    {
+        String sql = ContatosCursor.CONSULTA + (ordenarPor == ContatosCursor.OrdenarPor.NomeCrescente ? "ASC" : "DESC");
+        SQLiteDatabase bd = getReadableDatabase();
+        ContatosCursor cc = (ContatosCursor) bd.rawQueryWithFactory(new ContatosCursor.Factory(), sql, null, null);
+        cc.moveToFirst();
+        return cc;
+    }
+
+    public static class ContatosCursor extends SQLiteCursor
+    {
+        public static enum OrdenarPor{
+            NomeCrescente,
+            NomeDecrescente
+        }
+
+        private static final String CONSULTA = "SELECT Employee.ID, Nome, Codigo FROM Employee ORDER BY Nome ";
+
+        private ContatosCursor(SQLiteDatabase db, SQLiteCursorDriver driver, String editTable, SQLiteQuery query)
+        {
+            super(db, driver, editTable, query);
+        }
+
+        private static class Factory implements SQLiteDatabase.CursorFactory
+        {
+            @Override
+            public Cursor newCursor(SQLiteDatabase db, SQLiteCursorDriver driver, String editTable, SQLiteQuery query)
+            {
+                return new ContatosCursor(db, driver, editTable, query);
+            }
+        }
+
+        public long getID()
+        {
+            return getLong(getColumnIndexOrThrow("Employee.ID"));
+        }
+
+        public String getNome()
+        {
+            return getString(getColumnIndexOrThrow("Nome"));
+        }
+
+        public String getCodigo()
+        {
+            return getString(getColumnIndexOrThrow("Codigo"));
+        }
+    }
+
+
+
+
 }

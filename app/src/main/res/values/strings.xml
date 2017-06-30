@@ -7,4 +7,5 @@
     <string name="button">OK</string>
     <string name="enderecoServer">Servidor</string>
     <string name="botaoLogin">Login</string>
+    <string name="ContextoDados_onCreate">CREATE TABLE Employee (ID INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Codigo INTEGER, Senha TEXT, IdExterna TEXT);</string>
 </resources>
