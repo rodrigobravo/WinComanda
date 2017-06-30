@@ -20,7 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ConfigActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity
+            android:name=".LoginActivity"
+
+            android:windowSoftInputMode="stateVisible" />
     </application>
 
 </manifest>
