@@ -18,6 +18,17 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <TextView
+            android:id="@+id/funcionario_logado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/logado"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:layout_weight="1" />
+
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_main"
