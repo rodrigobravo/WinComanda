@@ -9,4 +9,5 @@
     <string name="botaoLogin">Login</string>
     <string name="ContextoDados_onCreate">CREATE TABLE Employee (ID INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Codigo INTEGER, Senha TEXT, IdExterna TEXT);</string>
     <string name="logado">Funcionário</string>
+    <string name="funcionarios">Funcionários</string>
 </resources>

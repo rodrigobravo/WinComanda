@@ -1,5 +1,6 @@
 package br.com.laborumtech.wincomanda;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +10,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
+
+import static br.com.laborumtech.wincomanda.R.id.novo_pedido;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        Button botaoInicial = (Button) findViewById(R.id.novo_pedido);
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        botaoInicial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (true){
@@ -36,7 +41,37 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        CarregarInterfaceListagem();
     }
+
+    public void CarregarInterfaceListagem()
+    {
+        setContentView(R.layout.activity_main);
+
+        CarregarLista(this);
+    }
+    public void CarregarLista(Context c)
+    {
+        ContextoDados db = new ContextoDados(c);
+        ContextoDados.ContatosCursor cursor = db.RetornarContatos(ContextoDados.ContatosCursor.OrdenarPor.NomeCrescente);
+
+        for( int i=0; i < cursor.getCount(); i++)
+        {
+            cursor.moveToPosition(i);
+            ImprimirLinha(cursor.getNome(), cursor.getCodigo());
+        }
+    }
+
+    public void ImprimirLinha(String nome, String telefone)
+    {
+        TextView tv = (TextView)findViewById(R.id.listaContatos);
+
+        if(tv.getText().toString().equalsIgnoreCase("Nenhum contato cadastrado."))
+            tv.setText("");
+
+        tv.setText(tv.getText() + "\r\n" + nome + " - " + telefone);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
