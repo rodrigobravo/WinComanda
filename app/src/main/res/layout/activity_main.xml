@@ -38,14 +38,9 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="@string/funcionarios"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/listaContatos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nenhum contato cadastrado." />
 
     <Button
         android:id="@+id/novo_pedido"
@@ -60,9 +55,16 @@
         android:elevation="6dp"
         android:stateListAnimator="@null"
         android:text="+"
+        android:onClick="LoginFuncionario"
         android:textColor="#fff"
         android:textSize="40sp"
         app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="bottom|center_horizontal" />
+
+    <TextView
+        android:id="@+id/listaContatos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nenhum contato cadastrado." />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -3,7 +3,6 @@ package br.com.laborumtech.wincomanda;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -25,23 +24,35 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Button botaoInicial = (Button) findViewById(R.id.novo_pedido);
-
+        
         botaoInicial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (true){
+
                             Intent intentvaiparalogin = new Intent(MainActivity.this, LoginActivity.class);
                             startActivity(intentvaiparalogin);
 
                         }
-                else{
-                        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-                }
 
-            }
+
+
         });
         CarregarInterfaceListagem();
+        VerificaFuncionario();
+    }
+
+
+
+    public void VerificaFuncionario() {
+        TextView exibeFuncionario = new TextView(this);
+        exibeFuncionario=(TextView)findViewById(R.id.funcionario_logado);
+        if (1 == 1){
+    }else{exibeFuncionario.setText("Selecione o funcionário:");
+    }
+    }
+    public void LoginFuncionario(View view){
+        Intent intentvaiparalogin = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intentvaiparalogin);
     }
 
     public void CarregarInterfaceListagem()
