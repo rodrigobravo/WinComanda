@@ -2,12 +2,15 @@
     <string name="app_name">WinComanda</string>
     <string name="action_settings">Configuração</string>
     <string name="employee_login">Login Funcionário</string>
+    <string name="product_code">Código do produto</string>
     <string name="loginMessage">Digite o código do funcionário:</string>
+    <string name="request_message">Digite os códigos dos produtos: </string>
     <string name="name">Servidor</string>
     <string name="button">OK</string>
     <string name="enderecoServer">Servidor</string>
     <string name="botaoLogin">Login</string>
     <string name="ContextoDados_onCreate">CREATE TABLE Employee (ID INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Codigo INTEGER, Senha TEXT, IdExterna TEXT);</string>
+    <string name="DadosTeste">INSERT INTO Employee (Nome, Codigo, Senha, IdExterna) VALUES ("João", "123", "123", "1234");</string>
     <string name="logado">Funcionário</string>
     <string name="funcionarios">Funcionários</string>
 </resources>

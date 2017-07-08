@@ -3,16 +3,12 @@ package br.com.laborumtech.wincomanda;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
-
-import static br.com.laborumtech.wincomanda.R.id.novo_pedido;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+
 
         Button botaoInicial = (Button) findViewById(R.id.novo_pedido);
         
@@ -29,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                            Intent intentvaiparalogin = new Intent(MainActivity.this, LoginActivity.class);
+                            Intent intentvaiparalogin = new Intent(MainActivity.this, PedidoActivity.class);
                             startActivity(intentvaiparalogin);
 
                         }
@@ -41,9 +37,7 @@ public class MainActivity extends AppCompatActivity {
         VerificaFuncionario();
     }
 
-
-
-    public void VerificaFuncionario() {
+    private void VerificaFuncionario() {
         TextView exibeFuncionario = new TextView(this);
         exibeFuncionario=(TextView)findViewById(R.id.funcionario_logado);
         if (1 == 1){
@@ -51,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
     }
     public void LoginFuncionario(View view){
-        Intent intentvaiparalogin = new Intent(MainActivity.this, LoginActivity.class);
+        Intent intentvaiparalogin = new Intent(MainActivity.this, PedidoActivity.class);
         startActivity(intentvaiparalogin);
     }
 
@@ -64,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     public void CarregarLista(Context c)
     {
         ContextoDados db = new ContextoDados(c);
-        ContextoDados.ContatosCursor cursor = db.RetornarContatos(ContextoDados.ContatosCursor.OrdenarPor.NomeCrescente);
+        ContextoDados.FuncionariosCursor cursor = db.RetornarFuncionarios(ContextoDados.FuncionariosCursor.OrdenarPor.NomeCrescente);
 
         for( int i=0; i < cursor.getCount(); i++)
         {
@@ -75,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void ImprimirLinha(String nome, String telefone)
     {
-        TextView tv = (TextView)findViewById(R.id.listaContatos);
+        TextView tv = (TextView)findViewById(R.id.listagemDados);
 
         if(tv.getText().toString().equalsIgnoreCase("Nenhum contato cadastrado."))
             tv.setText("");

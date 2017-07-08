@@ -1,6 +1,5 @@
 package br.com.laborumtech.wincomanda;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -34,13 +33,16 @@ public class ContextoDados extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db)
     {
         String[] sql = contexto.getString(R.string.ContextoDados_onCreate).split("\n");
+        String[] sql2 = contexto.getString(R.string.DadosTeste).split("\n");
         db.beginTransaction();
 
         try
         {
             // Cria a tabela e testa os dados
             ExecutarComandosSQL(db, sql);
+            ExecutarComandosSQL(db, sql2);
             db.setTransactionSuccessful();
+            Log.d("Database", "Dados criados");
         }
         catch (SQLException e)
         {
@@ -70,19 +72,19 @@ public class ContextoDados extends SQLiteOpenHelper{
                 db.execSQL(s);
     }
 
-    /** Retorna um ContatosCursor ordenado
+    /** Retorna um FuncionariosCursor ordenado
      * @param critério de ordenação
      */
-    public ContatosCursor RetornarContatos(ContatosCursor.OrdenarPor ordenarPor)
+    public FuncionariosCursor RetornarFuncionarios(FuncionariosCursor.OrdenarPor ordenarPor)
     {
-        String sql = ContatosCursor.CONSULTA + (ordenarPor == ContatosCursor.OrdenarPor.NomeCrescente ? "ASC" : "DESC");
+        String sql = FuncionariosCursor.CONSULTA + (ordenarPor == FuncionariosCursor.OrdenarPor.NomeCrescente ? "ASC" : "DESC");
         SQLiteDatabase bd = getReadableDatabase();
-        ContatosCursor cc = (ContatosCursor) bd.rawQueryWithFactory(new ContatosCursor.Factory(), sql, null, null);
+        FuncionariosCursor cc = (FuncionariosCursor) bd.rawQueryWithFactory(new FuncionariosCursor.Factory(), sql, null, null);
         cc.moveToFirst();
         return cc;
     }
 
-    public static class ContatosCursor extends SQLiteCursor
+    public static class FuncionariosCursor extends SQLiteCursor
     {
         public static enum OrdenarPor{
             NomeCrescente,
@@ -91,7 +93,7 @@ public class ContextoDados extends SQLiteOpenHelper{
 
         private static final String CONSULTA = "SELECT Employee.ID, Nome, Codigo FROM Employee ORDER BY Nome ";
 
-        private ContatosCursor(SQLiteDatabase db, SQLiteCursorDriver driver, String editTable, SQLiteQuery query)
+        private FuncionariosCursor(SQLiteDatabase db, SQLiteCursorDriver driver, String editTable, SQLiteQuery query)
         {
             super(db, driver, editTable, query);
         }
@@ -101,7 +103,7 @@ public class ContextoDados extends SQLiteOpenHelper{
             @Override
             public Cursor newCursor(SQLiteDatabase db, SQLiteCursorDriver driver, String editTable, SQLiteQuery query)
             {
-                return new ContatosCursor(db, driver, editTable, query);
+                return new FuncionariosCursor(db, driver, editTable, query);
             }
         }
 

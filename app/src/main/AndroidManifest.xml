@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".ConfigActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".PedidoActivity"
 
             android:windowSoftInputMode="stateVisible" />
     </application>
