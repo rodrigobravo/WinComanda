@@ -40,13 +40,29 @@ public class ContextoDados extends SQLiteOpenHelper{
         {
             // Cria a tabela e testa os dados
             ExecutarComandosSQL(db, sql);
-            ExecutarComandosSQL(db, sql2);
+
             db.setTransactionSuccessful();
-            Log.d("Database", "Dados criados");
+            Log.d("Table", "Tabela criada");
         }
         catch (SQLException e)
         {
             Log.e("Erro ao criar as tabelas e testar os dados", e.toString());
+        }
+        finally
+        {
+            db.endTransaction();
+        }
+        try
+        {
+            // Inserir os dados
+            ExecutarComandosSQL(db, sql2);
+
+            db.setTransactionSuccessful();
+            Log.d("Data", "Dados criados");
+        }
+        catch (SQLException e)
+        {
+            Log.e("Erro ao criar as tabelas e testar os dados2", e.toString());
         }
         finally
         {
