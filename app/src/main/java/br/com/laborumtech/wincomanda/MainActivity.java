@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void ImprimirLinha(String nome, String telefone)
     {
-        TextView tv = (TextView)findViewById(R.id.listagemDados);
+        TextView tv = (TextView)findViewById(R.id.listaContatos);
 
         if(tv.getText().toString().equalsIgnoreCase("Nenhum contato cadastrado."))
             tv.setText("");

@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQuery;
 import android.util.Log;
-//TODO implementar dados de teste
+
 /**
  * Created by rodrigo on 30/06/17.
  */
@@ -40,25 +40,9 @@ public class ContextoDados extends SQLiteOpenHelper{
         {
             // Cria a tabela e testa os dados
             ExecutarComandosSQL(db, sql);
-
-            db.setTransactionSuccessful();
-            Log.d("Table", "Tabela criada");
-        }
-        catch (SQLException e)
-        {
-            Log.e("Erro ao criar tabelas", e.toString());
-        }
-        finally
-        {
-            db.endTransaction();
-        }
-        try
-        {
-            // Inserir os dados
             ExecutarComandosSQL(db, sql2);
-
             db.setTransactionSuccessful();
-            Log.d("Data", "Dados criados");
+            Log.d("Database", "Dados criados");
         }
         catch (SQLException e)
         {
@@ -89,6 +73,7 @@ public class ContextoDados extends SQLiteOpenHelper{
     }
 
     /** Retorna um FuncionariosCursor ordenado
+     * @param ordenarPor
      */
     public FuncionariosCursor RetornarFuncionarios(FuncionariosCursor.OrdenarPor ordenarPor)
     {
