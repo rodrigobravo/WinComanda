@@ -19,7 +19,7 @@ public class ContextoDados extends SQLiteOpenHelper{
     /** O nome do arquivo de base de dados*/
     private static final String NOME_BD = "Comanda";
     /** A versão da base de dados */
-    private static final int VERSAO_BD = 1;
+    private static final int VERSAO_BD = 2;
     /** Mantém rastreamento do contexto da aplicação */
     private final Context contexto;
 
@@ -28,7 +28,7 @@ public class ContextoDados extends SQLiteOpenHelper{
         this.contexto = context;
     }
 
-
+//TODO: insert dados testes
     @Override
     public void onCreate(SQLiteDatabase db)
     {
@@ -40,9 +40,11 @@ public class ContextoDados extends SQLiteOpenHelper{
         {
             // Cria a tabela e testa os dados
             ExecutarComandosSQL(db, sql);
+            db.setTransactionSuccessful();
+            Log.d("Database", "Tabela criada");
             ExecutarComandosSQL(db, sql2);
             db.setTransactionSuccessful();
-            Log.d("Database", "Dados criados");
+            Log.d("Database", "Dados testes");
         }
         catch (SQLException e)
         {
@@ -73,7 +75,7 @@ public class ContextoDados extends SQLiteOpenHelper{
     }
 
     /** Retorna um FuncionariosCursor ordenado
-     * @param ordenarPor
+     *
      */
     public FuncionariosCursor RetornarFuncionarios(FuncionariosCursor.OrdenarPor ordenarPor)
     {

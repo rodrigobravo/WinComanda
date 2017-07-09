@@ -20,15 +20,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button botaoInicial = (Button) findViewById(R.id.novo_pedido);
-        
+
         botaoInicial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                            Intent intentvaiparalogin = new Intent(MainActivity.this, PedidoActivity.class);
-                            startActivity(intentvaiparalogin);
+                Intent intentvaiparalogin = new Intent(MainActivity.this, PedidoActivity.class);
+                startActivity(intentvaiparalogin);
 
-                        }
+            }
 
 
 
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         TextView exibeFuncionario = new TextView(this);
         exibeFuncionario=(TextView)findViewById(R.id.funcionario_logado);
         if (1 == 1){
-    }else{exibeFuncionario.setText("Selecione o funcionário:");
-    }
+        }else{exibeFuncionario.setText("Selecione o funcionário:");
+        }
     }
     public void LoginFuncionario(View view){
         Intent intentvaiparalogin = new Intent(MainActivity.this, PedidoActivity.class);
