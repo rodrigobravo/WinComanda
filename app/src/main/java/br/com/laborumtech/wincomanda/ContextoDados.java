@@ -19,7 +19,7 @@ public class ContextoDados extends SQLiteOpenHelper{
     /** O nome do arquivo de base de dados*/
     private static final String NOME_BD = "Comanda";
     /** A versão da base de dados */
-    private static final int VERSAO_BD = 2;
+    private static final int VERSAO_BD = 3;
     /** Mantém rastreamento do contexto da aplicação */
     private final Context contexto;
 
@@ -32,6 +32,7 @@ public class ContextoDados extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db)
     {
+
         String[] sql = contexto.getString(R.string.ContextoDados_onCreate).split("\n");
         String[] sql2 = contexto.getString(R.string.DadosTeste).split("\n");
         db.beginTransaction();
@@ -54,6 +55,7 @@ public class ContextoDados extends SQLiteOpenHelper{
         {
             db.endTransaction();
         }
+
     }
 
     @Override
